@@ -31,3 +31,14 @@ body {
     text-wrap: balance;
   }
 }
+
+@media (pointer: coarse) {
+  .forceHover:active {
+    background-color: #f2f4f6;
+  }
+}
+@media (pointer: fine) {
+  .forceHover:hover {
+    background-color: #f2f4f6;
+  }
+}
