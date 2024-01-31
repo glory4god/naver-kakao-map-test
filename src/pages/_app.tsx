@@ -37,9 +37,9 @@ const Head = () => {
         content={'https://search-naver-news.vercel.app'}
       />
       <meta property="og:type" content={'website'} />
-      <meta property="og:description" content={'소통하면 발전하는 행복 광진'} />
+      <meta property="og:description" content={'소통하며 발전하는 행복 광진'} />
       <meta name="title" content={'광진구청 홍보담당관'} />
-      <meta name="description" content={'소통하면 발전하는 행복 광진'} />
+      <meta name="description" content={'소통하며 발전하는 행복 광진'} />
     </NextHead>
   );
 };
