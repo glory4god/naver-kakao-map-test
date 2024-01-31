@@ -1,5 +1,11 @@
 import Link from 'next/link';
-import { InputHTMLAttributes, PropsWithChildren, useState } from 'react';
+import { useRouter } from 'next/router';
+import {
+  InputHTMLAttributes,
+  PropsWithChildren,
+  useEffect,
+  useState,
+} from 'react';
 
 interface News {
   title: string;
@@ -10,8 +16,10 @@ interface News {
 }
 
 export default function ChapterPage({}) {
+  const router = useRouter();
+  const { text } = router.query;
   const [loading, setLoading] = useState(false);
-  const [keyowrd, setKeyword] = useState('');
+  const [keyowrd, setKeyword] = useState(String(text || ''));
   const [news, setNews] = useState<News[]>([] as News[]);
 
   const onSearch = async (keyowrd: string) => {
@@ -33,9 +41,13 @@ export default function ChapterPage({}) {
     }
   };
 
+  useEffect(() => {
+    if (!!text) onSearch(String(text));
+  }, [text]);
+
   return (
     <div className="bg-white h-full min-h-screen pt-10">
-      <div className="px-5">
+      <div className="px-5 flex space-x-3">
         <BigInput
           value={keyowrd}
           onChange={(e) => setKeyword(e.target.value)}
@@ -46,7 +58,7 @@ export default function ChapterPage({}) {
         </Button>
       </div>
       <div className="mt-4">
-        {loading && <p>loading...</p>}
+        {loading && <p className="px-4">loading...</p>}
         {news.map((newsData, i) => {
           return <BoardRow news={newsData} key={i} />;
         })}
@@ -67,12 +79,15 @@ const BoardRow = ({ news }: Props) => {
         'h-auto font-bold cursor-pointer px-4 py-3 transition-all flex w-full forceHover justify-between border-b'
       }>
       <div className="">
+        <p className="text-xs whitespace-pre-line text-gray-700">
+          {(news.originallink.split(/\/\/|\//)[1] ?? '').replace(/www./, '')}
+        </p>
         <h3
-          className="text-sm my-1.5"
+          className="text-sm mt-1"
           dangerouslySetInnerHTML={{ __html: news.title }}
         />
         <p
-          className="text-xs mb-2 text-gray-600"
+          className="text-xs my-2 text-gray-600"
           dangerouslySetInnerHTML={{ __html: news.description }}
         />
         <p className="text-xs">{news.pubDate}</p>
