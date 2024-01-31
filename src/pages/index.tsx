@@ -64,18 +64,18 @@ const BoardRow = ({ news }: Props) => {
       href={news.originallink}
       target="_blank"
       className={
-        'h-auto font-bold cursor-pointer py-3  transition-all flex w-full forceHover justify-between border-b'
+        'h-auto font-bold cursor-pointer px-4 py-3 transition-all flex w-full forceHover justify-between border-b'
       }>
-      <div className="pl-5">
+      <div className="">
         <h3
-          className="text-sm my-1.5 whitespace-nowrap text-ellipsis overflow-hidden"
+          className="text-sm my-1.5"
           dangerouslySetInnerHTML={{ __html: news.title }}
         />
         <p
           className="text-xs mb-2 text-gray-600"
           dangerouslySetInnerHTML={{ __html: news.description }}
         />
-        <p className="text-xs ">{news.pubDate}</p>
+        <p className="text-xs">{news.pubDate}</p>
       </div>
     </Link>
   );
