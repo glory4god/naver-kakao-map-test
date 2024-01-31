@@ -10,19 +10,27 @@ interface News {
 }
 
 export default function ChapterPage({}) {
+  const [loading, setLoading] = useState(false);
   const [keyowrd, setKeyword] = useState('');
   const [news, setNews] = useState<News[]>([] as News[]);
 
   const onSearch = async (keyowrd: string) => {
-    const res = await fetch(`/api/news?query=${keyowrd}`);
-    const resJson: { items: News[] } = await res.json();
-    setNews(
-      resJson.items.filter(
-        (a) =>
-          keyowrd.split(' ').some((b) => a.title.includes(b)) ||
-          keyowrd.split(' ').some((b) => a.description.includes(b)),
-      ),
-    );
+    if (loading) return;
+    setLoading(true);
+    try {
+      const res = await fetch(`/api/news?query=${keyowrd}`);
+      const resJson: { items: News[] } = await res.json();
+      setNews(
+        resJson.items.filter(
+          (a) =>
+            keyowrd.split(' ').some((b) => a.title.includes(b)) ||
+            keyowrd.split(' ').some((b) => a.description.includes(b)),
+        ),
+      );
+    } catch {
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -33,9 +41,12 @@ export default function ChapterPage({}) {
           onChange={(e) => setKeyword(e.target.value)}
         />
         <div className="mt-4"></div>
-        <Button onClick={() => onSearch(keyowrd)}>검색</Button>
+        <Button disabled={loading} onClick={() => onSearch(keyowrd)}>
+          검색
+        </Button>
       </div>
       <div className="mt-4">
+        {loading && <p>loading...</p>}
         {news.map((newsData, i) => {
           return <BoardRow news={newsData} key={i} />;
         })}
