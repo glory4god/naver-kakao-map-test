@@ -1,20 +1,27 @@
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
+import NextHead from 'next/head';
+import Script from 'next/script';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head />
-      <Component {...pageProps} />;
+      <div className="max-w-3xl mx-auto">
+        <Component {...pageProps} />;
+      </div>
     </>
   );
 }
 
-import NextHead from 'next/head';
-
 const Head = () => {
   return (
     <NextHead>
+      <Script
+        src="https://t1.kakaocdn.net/kakao_js_sdk/2.6.0/kakao.min.js"
+        integrity="sha384-6MFdIr0zOira1CHQkedUqJVql0YtcZA1P0nbPrQYJXVJZUkTk/oX4U9GhUIs3/z8"
+        crossOrigin="anonymous"
+      />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta
         httpEquiv="Content-Security-Policy"
