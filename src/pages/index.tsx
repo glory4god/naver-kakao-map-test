@@ -1,7 +1,8 @@
+import { Button } from '@/components/Button';
 import { BigInput } from '@/components/Input';
 import { NewsLinkRow } from '@/components/NewsLinkRow';
 import { useRouter } from 'next/router';
-import { PropsWithChildren, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function ChapterPage({}) {
   const router = useRouter();
@@ -40,7 +41,6 @@ export default function ChapterPage({}) {
           value={keyowrd}
           onChange={(e) => setKeyword(e.target.value)}
         />
-        <div className="mt-4"></div>
         <Button disabled={loading} onClick={() => onSearch(keyowrd)}>
           검색
         </Button>
@@ -54,17 +54,3 @@ export default function ChapterPage({}) {
     </div>
   );
 }
-
-type ButtonProps = PropsWithChildren<{
-  onClick?: React.MouseEventHandler<HTMLElement>;
-  disabled?: boolean;
-}>;
-
-const Button = (props: ButtonProps) => {
-  const { children, ...rest } = props;
-  return (
-    <button className="bg-blue-500 px-5 py-2 rounded text-white" {...rest}>
-      {children}
-    </button>
-  );
-};
