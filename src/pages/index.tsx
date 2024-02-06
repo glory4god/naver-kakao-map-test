@@ -96,7 +96,21 @@ const BoardRow = ({ news }: Props) => {
           className="text-xs my-1.5 text-gray-600"
           dangerouslySetInnerHTML={{ __html: news.description }}
         />
-        <div className="flex justify-end">
+        <div className="flex justify-end space-x-3">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              navigator.clipboard.writeText(news.originallink);
+              window.alert('링크가 복사되었습니다.');
+            }}>
+            <Image
+              className="rounded"
+              src={'/clipboard.png'}
+              width={34}
+              height={34}
+              alt="카카오톡 공유"
+            />
+          </button>
           <KakaotalkShare
             url={news.originallink}
             title={news.title}
