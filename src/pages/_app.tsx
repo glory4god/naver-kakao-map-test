@@ -31,22 +31,22 @@ const Head = () => {
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta property="locale" content="ko_KR" />
 
-      <meta property="og:title" content={'지도'} />
+      <meta property="og:title" content={'광진구청 홍보담당관'} />
       <meta
         property="og:image"
         content={
           'https://exambomb-bucket.s3.ap-northeast-2.amazonaws.com/newsScrap.png'
         }
       />
-      <meta property="og:site-name" content={'지도'} />
+      <meta property="og:site-name" content={'광진구청 홍보담당관'} />
       <meta
         property="og:url"
         content={'https://search-naver-news.vercel.app'}
       />
       <meta property="og:type" content={'website'} />
-      <meta property="og:description" content={'지도에서 찾아보세요!'} />
-      <meta name="title" content={'지도'} />
-      <meta name="description" content={'지도에서 찾아보세요!'} />
+      <meta property="og:description" content={'소통하며 발전하는 행복 광진'} />
+      <meta name="title" content={'광진구청 홍보담당관'} />
+      <meta name="description" content={'소통하며 발전하는 행복 광진'} />
     </NextHead>
   );
 };
