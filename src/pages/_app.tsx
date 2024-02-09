@@ -2,7 +2,6 @@
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import NextHead from 'next/head';
-import Script from 'next/script';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -23,6 +22,10 @@ const Head = () => {
       <script
         type="text/javascript"
         src={`https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${NAVER_CLIENT_ID}`}
+      />
+      <meta
+        name="naver-site-verification"
+        content="888611dfbcbefb9a66285b309dd029f8c8c226a9"
       />
 
       <meta name="viewport" content="width=device-width, initial-scale=1" />

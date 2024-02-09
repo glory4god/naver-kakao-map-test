@@ -2,10 +2,9 @@ interface Window {
   Kakao: any;
 }
 
-interface News {
-  title: string;
-  link: string;
-  description: string;
-  originallink: string;
-  pubDate: string;
+interface Building {
+  buildingName?: string;
+  address: string;
+  latitude: number;
+  longitude: number;
 }
