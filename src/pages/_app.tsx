@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-sync-scripts */
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import NextHead from 'next/head';
@@ -14,14 +15,16 @@ export default function App({ Component, pageProps }: AppProps) {
   );
 }
 
+const NAVER_CLIENT_ID = process.env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID;
+
 const Head = () => {
   return (
     <NextHead>
-      <Script
-        src="https://t1.kakaocdn.net/kakao_js_sdk/2.6.0/kakao.min.js"
-        integrity="sha384-6MFdIr0zOira1CHQkedUqJVql0YtcZA1P0nbPrQYJXVJZUkTk/oX4U9GhUIs3/z8"
-        crossOrigin="anonymous"
+      <script
+        type="text/javascript"
+        src={`https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${NAVER_CLIENT_ID}`}
       />
+
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta
         httpEquiv="Content-Security-Policy"
@@ -31,22 +34,22 @@ const Head = () => {
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta property="locale" content="ko_KR" />
 
-      <meta property="og:title" content={'광진구청 홍보담당관'} />
+      <meta property="og:title" content={'지도'} />
       <meta
         property="og:image"
         content={
           'https://exambomb-bucket.s3.ap-northeast-2.amazonaws.com/newsScrap.png'
         }
       />
-      <meta property="og:site-name" content={'광진구청 홍보담당관'} />
+      <meta property="og:site-name" content={'지도'} />
       <meta
         property="og:url"
         content={'https://search-naver-news.vercel.app'}
       />
       <meta property="og:type" content={'website'} />
-      <meta property="og:description" content={'소통하며 발전하는 행복 광진'} />
-      <meta name="title" content={'광진구청 홍보담당관'} />
-      <meta name="description" content={'소통하며 발전하는 행복 광진'} />
+      <meta property="og:description" content={'지도에서 찾아보세요!'} />
+      <meta name="title" content={'지도'} />
+      <meta name="description" content={'지도에서 찾아보세요!'} />
     </NextHead>
   );
 };
