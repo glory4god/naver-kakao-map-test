@@ -38,17 +38,8 @@ const Head = () => {
       <meta property="locale" content="ko_KR" />
 
       <meta property="og:title" content={'지도'} />
-      <meta
-        property="og:image"
-        content={
-          'https://exambomb-bucket.s3.ap-northeast-2.amazonaws.com/newsScrap.png'
-        }
-      />
       <meta property="og:site-name" content={'지도'} />
-      <meta
-        property="og:url"
-        content={'https://search-naver-news.vercel.app'}
-      />
+      <meta property="og:url" content={'https://building-info.vercel.app/'} />
       <meta property="og:type" content={'website'} />
       <meta property="og:description" content={'지도에서 찾아보세요!'} />
       <meta name="title" content={'지도'} />

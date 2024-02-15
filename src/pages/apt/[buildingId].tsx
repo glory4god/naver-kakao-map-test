@@ -36,8 +36,8 @@ export default function ChapterPage({ buildingId, building }: ServerProps) {
     };
   }, []);
 
-  const title = `${building.address} 주소 위치 정보 | building-info`;
-  const description = `${building.address} 주소의 위치 정보에 대해서 알아보세요! | building-info`;
+  const title = `${building.address} 주소 지도 위치 정보`;
+  const description = `${building.address} 주소의 위치 정보에 대해서 알아보세요!`;
   const url = `https://building-info.vercel.app/apt/${buildingId}`;
   return (
     <>
@@ -80,6 +80,7 @@ export default function ChapterPage({ buildingId, building }: ServerProps) {
             </tr>
           </tbody>
         </table>
+        <p>지도에서 위치를 확인해보세요!</p>
         <div id="map" className="w-full h-[600px] mt-5" />
         <p className="mt-10">다른 주소들도 확인해보세요!</p>
         <ul className="space-y-2 mt-4">
