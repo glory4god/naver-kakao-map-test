@@ -6,7 +6,7 @@ export default function ChapterPage({}) {
   const router = useRouter();
 
   return (
-    <div className="bg-white h-full min-h-screen pt-10 px-5">
+    <div className="bg-white h-full min-h-screen">
       <div className="mt-4">다음 주소의 위치정보를 알아보세요!</div>
 
       <ul className="space-y-2 mt-4">

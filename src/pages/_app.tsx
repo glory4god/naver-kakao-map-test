@@ -7,8 +7,8 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head />
-      <div className="max-w-3xl mx-auto shadow-lg">
-        <Component {...pageProps} />;
+      <div className="max-w-3xl mx-auto shadow-lg py-10 px-4 h-full min-h-screen bg-white">
+        <Component {...pageProps} />
       </div>
     </>
   );

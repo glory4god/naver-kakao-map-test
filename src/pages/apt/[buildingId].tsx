@@ -22,7 +22,7 @@ export default function ChapterPage({ buildingId, building }: ServerProps) {
 
       map = new naver.maps.Map('map', {
         center: center,
-        zoom: 15,
+        zoom: 14,
       });
 
       mapRef.current = map;
@@ -59,48 +59,44 @@ export default function ChapterPage({ buildingId, building }: ServerProps) {
 
         <link rel="canonical" href={url} />
       </NextHead>
-      <div className="bg-white h-full min-h-screen pt-10 px-4">
-        <h1 className="text-lg">
-          <b>{building.address}</b>
-        </h1>
-        {building?.buildingName && (
-          <h2 className="text-lg mt-1 pb-2">{building.buildingName}</h2>
-        )}
-        <table>
-          <tbody>
-            <tr>
-              <th>주소</th>
-              <td>{building.address}</td>
-            </tr>
-            <tr>
-              <th>좌표</th>
-              <td>
-                {building.latitude}, {building.longitude}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <p>지도에서 위치를 확인해보세요!</p>
-        <div id="map" className="w-full h-[600px] mt-5" />
-        <p className="mt-10">다른 주소들도 확인해보세요!</p>
-        <ul className="space-y-2 mt-4">
-          {buildings.map(({ address, latitude, longitude }, i) => {
-            if (buildingId + 15 > i && buildingId - 15 < i)
-              return (
-                <li
-                  className="p-3 shadow-sm border rounded text-sm"
-                  key={i + 1}>
-                  <Link href={`/apt/${i + 1}`}>
-                    <h2>{address}</h2>
-                    <p className="mt-1">
-                      {latitude}, {longitude}
-                    </p>
-                  </Link>
-                </li>
-              );
-          })}
-        </ul>
-      </div>
+      <h1 className="text-lg">
+        <b>{building.address}</b>
+      </h1>
+      {building?.buildingName && (
+        <h2 className="text-lg mt-1 pb-2">{building.buildingName}</h2>
+      )}
+      <table>
+        <tbody>
+          <tr>
+            <th>주소</th>
+            <td>{building.address}</td>
+          </tr>
+          <tr>
+            <th>좌표</th>
+            <td>
+              {building.latitude}, {building.longitude}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p>지도에서 위치를 확인해보세요!</p>
+      <div id="map" className="w-full h-[600px] mt-5" />
+      <p className="mt-10">다른 주소들도 확인해보세요!</p>
+      <ul className="space-y-2 mt-4">
+        {buildings.map(({ address, latitude, longitude }, i) => {
+          if (buildingId + 15 > i && buildingId - 15 < i)
+            return (
+              <li className="p-3 shadow-sm border rounded text-sm" key={i + 1}>
+                <Link href={`/apt/${i + 1}`}>
+                  <h2>{address}</h2>
+                  <p className="mt-1">
+                    {latitude}, {longitude}
+                  </p>
+                </Link>
+              </li>
+            );
+        })}
+      </ul>
     </>
   );
 }
